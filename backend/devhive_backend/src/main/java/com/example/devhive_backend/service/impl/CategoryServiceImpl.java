@@ -46,4 +46,9 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = mapToCategory(categoryDTO);
         categoryRepository.save(category);
     }
+
+    @Override
+    public void deleteCategory(Long id) {
+        categoryRepository.deleteById(id);
+    }
 }
