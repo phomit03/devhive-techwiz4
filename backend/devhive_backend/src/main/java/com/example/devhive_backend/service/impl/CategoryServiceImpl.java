@@ -2,6 +2,7 @@ package com.example.devhive_backend.service.impl;
 
 import com.example.devhive_backend.dto.CategoryDTO;
 import com.example.devhive_backend.entity.Category;
+import com.example.devhive_backend.entity.User;
 import com.example.devhive_backend.mapper.CategoryMapper;
 import com.example.devhive_backend.repository.CategoryRepository;
 import com.example.devhive_backend.service.CategoryService;
@@ -38,5 +39,11 @@ public class CategoryServiceImpl implements CategoryService {
     public Category createCategory(CategoryDTO categoryDTO) {
         Category category = mapToCategory(categoryDTO);
         return categoryRepository.save(category);
+    }
+
+    @Override
+    public void updateCategory(CategoryDTO categoryDTO) {
+        Category category = mapToCategory(categoryDTO);
+        categoryRepository.save(category);
     }
 }

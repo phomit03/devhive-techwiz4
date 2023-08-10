@@ -6,6 +6,7 @@ import com.example.devhive_backend.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,8 +29,16 @@ public class CategoryController {
     }
     @PostMapping("/create")
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) {
-         categoryService.createCategory(categoryDTO);
+        categoryService.createCategory(categoryDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<CategoryDTO> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryDTO categoryDTO) {
+        categoryDTO.setId(id);
+        categoryService.updateCategory(categoryDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

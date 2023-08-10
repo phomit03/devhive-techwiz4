@@ -36,8 +36,6 @@ public class User {
   @Size(max = 120)
   private String address;
 
-  @NotBlank
-  @Size(max = 120)
   private Integer status;
 
 
