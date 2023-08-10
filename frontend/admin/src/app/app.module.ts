@@ -30,8 +30,6 @@ import { UserCreateComponent } from './components/user/user-create/user-create.c
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 import { OrderListComponent } from './components/order/order-list/order-list.component';
 import { OrderEditComponent } from './components/order/order-edit/order-edit.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -62,13 +60,11 @@ import { FormsModule } from '@angular/forms';
     UserCreateComponent,
     UserEditComponent,
     OrderListComponent,
-    OrderEditComponent,
+    OrderEditComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
