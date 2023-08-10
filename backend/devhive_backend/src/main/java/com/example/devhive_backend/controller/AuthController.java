@@ -125,20 +125,7 @@ public class AuthController {
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
-
-//  @GetMapping("/decode-token")
-//  public ResponseEntity<User> decodeToken(@RequestParam("token") String token) {
-//    if (token == null || token.isEmpty()) {
-//      throw new IllegalArgumentException("Token is null or empty.");
-//    }
-//
-//    String username = jwtUtils.getUserNameFromJwtToken(token);
-//    User user = userRepository.findByUsername(username)
-//            .orElseThrow(() -> new RuntimeException("User not found."));
-//
-//    return ResponseEntity.ok(user);
-//  }
-
+  
   @GetMapping("/decode-token")
   public ResponseEntity<?> decodeToken(@RequestParam("token") String token) {
     if (!jwtUtils.validateJwtToken(token)) {
