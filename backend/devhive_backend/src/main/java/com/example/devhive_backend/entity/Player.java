@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
 
@@ -22,7 +22,7 @@ public class Player {
     private String nationality;
 
     @Column(name = "team_id")
-    private Integer teamId;
+    private Long teamId;
 
     private String position;
 

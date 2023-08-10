@@ -13,13 +13,13 @@ import java.math.BigDecimal;
 public class OrderProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "order_id")
-    private Integer orderId;
+    private Long orderId;
 
     @Column(name = "product_id")
-    private Integer productId;
+    private Long productId;
 
     private Integer quantity;
 
