@@ -51,8 +51,8 @@
 
         <ul class="menu-inner py-1 ps">
           <!-- Dashboard -->
-          <li class="menu-item active">
-            <a routerLink="/" class="menu-link">
+          <li class="menu-item" routerLink="/dashboard" routerLinkActive="active">
+            <a class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -63,49 +63,49 @@
           <!-- Forms -->
 
           <!-- Tables -->
-          <li class="menu-item">
-            <a routerLink="/user" class="menu-link">
+          <li class="menu-item" routerLink="/user" routerLinkActive="active">
+            <a class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Tables">User Accounts</div>
             </a>
-          </li><li class="menu-item">
-          <a routerLink="/team" class="menu-link">
+          </li><li class="menu-item" routerLink="/team" routerLinkActive="active">
+          <a class="menu-link">
             <i class="menu-icon tf-icons bx bx-dock-top"></i>
             <div data-i18n="Tables">Teams</div>
           </a>
         </li>
-          <li class="menu-item">
-            <a routerLink="/player" class="menu-link">
+          <li class="menu-item" routerLink="/player" routerLinkActive="active">
+            <a class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Tables">Players</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a href="manage-list/matchs.html" class="menu-link">
+          <li class="menu-item" routerLink="/match" routerLinkActive="active">
+            <a class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Tables">Matchs</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a href="manage-list/news.html" class="menu-link">
+          <li class="menu-item"  routerLink="/news" routerLinkActive="active">
+            <a class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Tables">News</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a href="manage-list/category.html" class="menu-link">
+          <li class="menu-item"  routerLink="/category" routerLinkActive="active">
+            <a class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Tables">Category</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a href="manage-list/products.html" class="menu-link">
+          <li class="menu-item"  routerLink="/product" routerLinkActive="active">
+            <a class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Tables">Products</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a href="manage-list/oders.html" class="menu-link">
+          <li class="menu-item"  routerLink="/order" routerLinkActive="active">
+            <a class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Tables">Oders</div>
             </a>
@@ -221,10 +221,11 @@
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
+        <router-outlet></router-outlet>
+
         <div class="content-wrapper">
           
           <!-- Content -->
-            <router-outlet></router-outlet>
           <!-- / Content -->
 
           <!-- Footer -->
