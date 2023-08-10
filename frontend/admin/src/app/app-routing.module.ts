@@ -25,6 +25,8 @@ import { TeamEditComponent } from './components/team/team-edit/team-edit.compone
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { UserCreateComponent } from './components/user/user-create/user-create.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+import { OrderEditComponent } from './components/order/order-edit/order-edit.component';
+import { OrderListComponent } from './components/order/order-list/order-list.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -32,6 +34,7 @@ const routes: Routes = [
   
   {path: '', component: LayoutComponent, children: [
     {path: '', component: DashboardComponent},
+    {path: 'dashboard', component: DashboardComponent},
 
     {path: 'category', component: CategoryListComponent},
     {path: 'category/create', component: CategoryCreateComponent},
@@ -61,9 +64,9 @@ const routes: Routes = [
     {path: 'user/create', component: UserCreateComponent},
     {path: 'user/edit', component: UserEditComponent},
 
-    {path: 'order', component: PlayeListComponent},
-    {path: 'order/create', component: PlayerCreateComponent},
-    {path: 'order/edit', component: PlayerEditComponent},
+    {path: 'order', component: OrderListComponent},
+    {path: 'order/create', component: OrderEditComponent},
+    {path: 'order/edit', component: OrderEditComponent},
   ]}
 ];
 
