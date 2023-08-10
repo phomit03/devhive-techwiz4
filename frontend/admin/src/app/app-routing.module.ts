@@ -29,6 +29,7 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  
   {path: '', component: LayoutComponent, children: [
     {path: '', component: DashboardComponent},
 
