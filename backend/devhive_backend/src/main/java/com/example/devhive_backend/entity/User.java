@@ -31,9 +31,7 @@ public class User {
   @NotBlank
   @Size(max = 120)
   private String password;
-
-  @NotBlank
-  @Size(max = 120)
+  
   private String address;
 
   private Integer status;
