@@ -27,12 +27,13 @@ import { UserCreateComponent } from './components/user/user-create/user-create.c
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 import { OrderEditComponent } from './components/order/order-edit/order-edit.component';
 import { OrderListComponent } from './components/order/order-list/order-list.component';
+import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   
-  {path: '', component: LayoutComponent, children: [
+  {path: '', component: LayoutComponent, canActivate: [AuthGuardService], children: [
     {path: '', component: DashboardComponent},
     {path: 'dashboard', component: DashboardComponent},
 
