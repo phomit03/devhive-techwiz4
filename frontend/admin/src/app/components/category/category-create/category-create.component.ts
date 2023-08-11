@@ -29,9 +29,13 @@ export class CategoryCreateComponent {
   create() {
     this.services.create(this.categoryCreate).subscribe({
       next: (response) => {
+        this.router.navigate(['/category'])
       },
       error: (error) => {
-        this.router.navigate(['/category'])
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+        });
       }
     })
   }
