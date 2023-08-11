@@ -11,8 +11,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "*", maxAge = 3600)
-
 @RestController
 @RequestMapping("/api/category")
 public class CategoryController {
@@ -21,7 +19,7 @@ public class CategoryController {
 
     @GetMapping("getAll")
 //    @Secured({"ROLE_ADMIN", "ROLE_USER"})
-    // @PreAuthorize("hasRole('ADMIN')")
+//     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         List<CategoryDTO> categories = categoryService.getAllCategories();
         return new ResponseEntity<>(categories, HttpStatus.OK);
