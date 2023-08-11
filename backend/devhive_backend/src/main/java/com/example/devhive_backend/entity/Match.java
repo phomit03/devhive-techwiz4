@@ -1,6 +1,7 @@
 package com.example.devhive_backend.entity;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -21,7 +22,7 @@ public class Match {
 
     private LocalTime time;
 
-    private String score;
+    private @Nullable String score;
 
     @Column(name = "soccer_info", columnDefinition = "TEXT")
     private String soccerInfo;

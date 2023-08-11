@@ -6,6 +6,7 @@ import com.example.devhive_backend.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -71,7 +72,66 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
     http.httpBasic().authenticationEntryPoint(unauthorizedHandler);
     http.authorizeRequests()
             .antMatchers("/api/auth/**").permitAll()
-            .antMatchers("/api/new/**").hasAnyRole("ADMIN")
+            //new
+            .antMatchers("/api/new/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/new/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/new/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/new/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/new/{id}").hasAnyRole("ADMIN")
+            //category
+            .antMatchers("/api/category/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/category/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/category/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/category/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/category/{id}").hasAnyRole("ADMIN")
+            //feedback
+            .antMatchers("/api/feedback/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/feedback/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/feedback/create").hasAnyRole("ADMIN","USER")
+            //match
+            .antMatchers("/api/match/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/match/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/match/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/match/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/match/{id}").hasAnyRole("ADMIN")
+            //order
+            .antMatchers("/api/order/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/order/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/order/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/order/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/order/{id}").hasAnyRole("ADMIN")
+            //order-product
+            .antMatchers("/api/order/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/order/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/order/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/order/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/order/{id}").hasAnyRole("ADMIN")
+            //player
+            .antMatchers("/api/player/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/player/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/player/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/player/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/player/{id}").hasAnyRole("ADMIN")
+            //product
+            .antMatchers("/api/product/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/product/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/product/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/product/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/product/{id}").hasAnyRole("ADMIN")
+            //test
+            .antMatchers("/api/product/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/product/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/product/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/product/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/product/{id}").hasAnyRole("ADMIN")
+            //team
+            .antMatchers("/api/team/getAll").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/team/{id}").hasAnyRole("ADMIN","USER")
+            .antMatchers("/api/team/create").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.POST,"/api/team/{id}").hasAnyRole("ADMIN")
+            .mvcMatchers(HttpMethod.DELETE,"/api/team/{id}").hasAnyRole("ADMIN")
+            //test
+            .antMatchers("/api/test/**").hasAnyRole("ADMIN")
             .anyRequest().authenticated()
             .and().csrf().disable();
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
