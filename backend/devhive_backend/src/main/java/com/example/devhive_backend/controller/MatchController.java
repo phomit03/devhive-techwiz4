@@ -27,7 +27,7 @@ public class MatchController {
     @PostMapping("/create")
     public ResponseEntity<String> createMatch(@RequestBody MatchDTO matchDTO) {
         matchService.createMatch(matchDTO);
-        return new ResponseEntity<>("Match created successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("Match created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")
     public ResponseEntity<String> updateMatch(@PathVariable("id") Long id, @RequestBody MatchDTO matchDTO) {

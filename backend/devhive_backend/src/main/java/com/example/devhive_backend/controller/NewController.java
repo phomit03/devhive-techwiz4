@@ -28,7 +28,7 @@ public class NewController {
     @PostMapping("/create")
     public ResponseEntity<String> createNew(@RequestBody NewDTO newDTO) {
         newService.createNew(newDTO);
-        return new ResponseEntity<>("New created successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("New created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")
     public ResponseEntity<String> updateNew(@PathVariable("id") Long id, @RequestBody NewDTO newDTO) {

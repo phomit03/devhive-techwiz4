@@ -30,7 +30,7 @@ public class ProductController {
     @PostMapping("/create")
     public ResponseEntity<String> createProduct(@RequestBody ProductDTO productDTO) {
         productService.createProduct(productDTO);
-        return new ResponseEntity<>("Product created successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("Product created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable("id") Long id, @RequestBody ProductDTO productDTO) {

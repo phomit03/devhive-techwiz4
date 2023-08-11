@@ -27,7 +27,7 @@ public class PlayerController {
     @PostMapping("/create")
     public ResponseEntity<String> createPlayer(@RequestBody PlayerDTO playerDTO) {
         playerService.createPlayer(playerDTO);
-        return new ResponseEntity<>("Player created successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("Player created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")
     public ResponseEntity<String> updatePlayer(@PathVariable("id") Long id, @RequestBody PlayerDTO playerDTO) {

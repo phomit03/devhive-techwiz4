@@ -27,7 +27,7 @@ public class TeamController {
     @PostMapping("/create")
     public ResponseEntity<String> createTeam(@RequestBody TeamDTO teamDTO) {
         teamService.createTeam(teamDTO);
-        return new ResponseEntity<>("Team created successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("Team created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")
     public ResponseEntity<String> updateTeam(@PathVariable("id") Long id, @RequestBody TeamDTO teamDTO) {

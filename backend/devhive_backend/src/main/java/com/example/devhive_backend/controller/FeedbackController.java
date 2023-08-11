@@ -27,7 +27,7 @@ public class FeedbackController {
     @PostMapping("/create")
     public ResponseEntity<String> createFeedback(@RequestBody FeedbackDTO feedbackDTO) {
         feedbackService.createFeedback(feedbackDTO);
-        return new ResponseEntity<>("Feedback created successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("Feedback created successfully",HttpStatus.OK);
     }
 
 }

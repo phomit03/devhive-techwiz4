@@ -27,7 +27,7 @@ public class OrderProductController {
     @PostMapping("/create")
     public ResponseEntity<String> createOrderProduct(@RequestBody OrderProductDTO orderProductDTO) {
         orderProductService.createOrderProduct(orderProductDTO);
-        return new ResponseEntity<>("OrderProduct created successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("OrderProduct created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")
     public ResponseEntity<String> updateOrderProduct(@PathVariable("id") Long id, @RequestBody OrderProductDTO orderProductDTO) {
