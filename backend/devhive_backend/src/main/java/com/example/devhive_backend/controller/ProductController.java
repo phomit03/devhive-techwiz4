@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -28,14 +29,14 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createProduct(@RequestBody ProductDTO productDTO) {
-        productService.createProduct(productDTO);
+    public ResponseEntity<String> createProduct(@RequestBody ProductDTO productDTO, @RequestParam("image") MultipartFile image) {
+        productService.createProduct(productDTO, image);
         return new ResponseEntity<>("Product created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")
-    public ResponseEntity<String> updateProduct(@PathVariable("id") Long id, @RequestBody ProductDTO productDTO) {
+    public ResponseEntity<String> updateProduct(@PathVariable("id") Long id, @RequestBody ProductDTO productDTO, @RequestParam("image") MultipartFile image) {
         productDTO.setId(id);
-        productService.updateProduct(productDTO);
+        productService.updateProduct(productDTO, image);
         return new ResponseEntity<>("Product updated successfully",HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
