@@ -18,7 +18,7 @@ import { NewsCreateComponent } from './components/news/news-create/news-create.c
 import { NewsEditComponent } from './components/news/news-edit/news-edit.component';
 import { PlayerCreateComponent } from './components/player/player-create/player-create.component';
 import { PlayerEditComponent } from './components/player/player-edit/player-edit.component';
-import { PlayeListComponent } from './components/player/playe-list/playe-list.component';
+import { PlayeListComponent } from './components/player/player-list/playe-list.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
 import { ProductEditComponent } from './components/product/product-edit/product-edit.component';

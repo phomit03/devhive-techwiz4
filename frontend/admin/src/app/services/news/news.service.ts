@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { News } from 'src/app/response/response.interface';
@@ -12,7 +12,12 @@ export class NewsService {
   constructor(private http: HttpClient) { }
 
   getAll() : Observable<News[]> {
-    return this.http.get<News[]>(this.baseApiUrl + '/news/getAll');
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<News[]>(this.baseApiUrl + '/news/getAll', {headers})
   }
 
   getById(id: number) : Observable<News> {

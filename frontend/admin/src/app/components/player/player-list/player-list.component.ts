@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/response/response.interface'; // Thay thế đường dẫn tới interface Product
-import { ProductService } from 'src/app/services/product/product.service'; // Thay thế đường dẫn tới ProductService
+import { Player } from 'src/app/response/response.interface';
+import { PlayerService } from 'src/app/services/player/player.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: 'app-player-list',
+  templateUrl: './player-list.component.html',
+  styleUrls: ['./player-list.component.css']
 })
-export class ProductListComponent implements OnInit {  
-  products: Product[] = [];
+export class PlayerListComponent implements OnInit {  
+  players: Player[] = [];
   
-  constructor(private router: Router, private productService: ProductService) {} // Thay thế ProductService
+  constructor(private router: Router, private playerService: PlayerService) {}
 
   ngOnInit(): void {
-    this.productService.getAll().subscribe({
+    this.playerService.getAll().subscribe({
       next: (response) => {
-        this.products = response;
+        this.players = response;
       },
       error: (error) => {
         // Handle error
@@ -38,7 +38,7 @@ export class ProductListComponent implements OnInit {
       if (result.isConfirmed) {
         const token = localStorage.getItem('access_token');
         if (token !== null) {
-          this.productService.delete(id).subscribe({
+          this.playerService.delete(id).subscribe({
             next: (response) => {
               // Handle success
             },
@@ -55,7 +55,7 @@ export class ProductListComponent implements OnInit {
         }
         Swal.fire(
           'Deleted!',
-          'Product has been deleted.',
+          'Player has been deleted.',
           'success'
         );
         window.location.reload();

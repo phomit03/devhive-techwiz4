@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Match } from 'src/app/response/response.interface';
@@ -12,7 +12,12 @@ export class MatchService {
   constructor(private http: HttpClient) { }
 
   getAll() : Observable<Match[]> {
-    return this.http.get<Match[]>(this.baseApiUrl + '/match/getAll');
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<Match[]>(this.baseApiUrl + '/match/getAll', {headers})
   }
 
   getById(id: number) : Observable<Match> {

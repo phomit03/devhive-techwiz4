@@ -13,7 +13,7 @@ import { MatchListComponent } from './components/match/match-list/match-list.com
 import { NewsListComponent } from './components/news/news-list/news-list.component';
 import { NewsCreateComponent } from './components/news/news-create/news-create.component';
 import { NewsEditComponent } from './components/news/news-edit/news-edit.component';
-import { PlayeListComponent } from './components/player/playe-list/playe-list.component';
+import { PlayeListComponent } from './components/player/player-list/playe-list.component';
 import { PlayerCreateComponent } from './components/player/player-create/player-create.component';
 import { PlayerEditComponent } from './components/player/player-edit/player-edit.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';

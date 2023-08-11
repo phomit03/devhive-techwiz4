@@ -34,7 +34,12 @@ export class ProductService {
   }
 
   getAll() : Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseApiUrl + '/product/getAll')
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<Product[]>(this.baseApiUrl + '/product/getAll', {headers})
   }
 
   getById(id: number) : Observable<Product> {
