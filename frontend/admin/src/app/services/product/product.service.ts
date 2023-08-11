@@ -1,4 +1,4 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MessageResponse } from 'src/app/response/messageResponse.interface';
@@ -13,6 +13,10 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   create(product: Product, imageFile: File) {
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
     const formData = new FormData();
     formData.append('image', imageFile);
     formData.append('name', product.name);
@@ -21,6 +25,7 @@ export class ProductService {
     formData.append('category', product.category.id.toString());
     formData.append('status', product.status.toString());
     const req = new HttpRequest('POST', `${this.baseApiUrl}/product/create`, formData, {
+      headers,
       reportProgress: true,
       responseType: 'json'
     });
