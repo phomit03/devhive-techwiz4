@@ -29,12 +29,10 @@ export class LoginComponent {
         if (response.accessToken !== null && response.roles.includes('ROLE_ADMIN')) {
           localStorage.setItem('access_token', response.accessToken);
           localStorage.setItem('curr_user_role', response.roles.toString());
-          console.log(localStorage.getItem('curr_user_role'));
           this.router.navigate(['/dashboard']);
         }
       },
       error: (error) => {
-        console.log(error);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

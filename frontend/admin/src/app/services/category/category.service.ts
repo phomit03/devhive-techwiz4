@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/response/category-response.interface';
+import { MessageResponse } from 'src/app/response/messageResponse.interface';
 import { environment } from 'src/enviroments/enviroment';
 
 @Injectable({
@@ -17,6 +18,10 @@ export class CategoryService {
 
   getById(id: number) : Observable<Category> {
     return this.http.get<Category>(this.baseApiUrl + '/category/' + id);
+  }
+
+  create(categoryCreate: Category) {
+    return this.http.post<MessageResponse>(this.baseApiUrl + '/category/create', categoryCreate);
   }
 
   update(categoryEdit: Category) {

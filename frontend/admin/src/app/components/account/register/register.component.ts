@@ -24,7 +24,6 @@ export class RegisterComponent {
   register() {
     this.authService.register(this.registerRequest).subscribe({
       next: (response) => {
-        console.log(response);
         Swal.fire(
           'Good job!',
           response.message,
