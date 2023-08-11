@@ -6,6 +6,7 @@ import com.example.devhive_backend.repository.ProductRepository;
 import com.example.devhive_backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,16 +31,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product createProduct(ProductDTO productDTO) {
-        Product product = mapToProduct(productDTO);
+    public Product createProduct(ProductDTO productDTO, MultipartFile image) {
+        Product product = mapToProduct(productDTO, image);
         return productRepository.save(product);
     }
 
 
 
     @Override
-    public void updateProduct(ProductDTO productDTO) {
-        Product product = mapToProduct(productDTO);
+    public void updateProduct(ProductDTO productDTO, MultipartFile image) {
+        Product product = mapToProduct(productDTO, image);
         productRepository.save(product);
     }
 

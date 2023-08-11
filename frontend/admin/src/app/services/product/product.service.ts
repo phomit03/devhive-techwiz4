@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MessageResponse } from 'src/app/response/messageResponse.interface';
@@ -12,8 +12,20 @@ export class ProductService {
   private baseApiUrl: string = environment.baseApiUrl;
   constructor(private http: HttpClient) { }
 
-  create(categoryCreate: Product) {
-    return this.http.post<MessageResponse>(this.baseApiUrl + '/product/create', categoryCreate);
+  create(product: Product, imageFile: File) {
+    const formData = new FormData();
+    formData.append('image', imageFile);
+    formData.append('name', product.name);
+    formData.append('quantity', product.quantity);
+    formData.append('price', product.price.toString());
+    formData.append('category', product.category.id.toString());
+    formData.append('status', product.status.toString());
+    const req = new HttpRequest('POST', `${this.baseApiUrl}/product/create`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
   }
 
   getAll() : Observable<Product[]> {
@@ -24,8 +36,8 @@ export class ProductService {
     return this.http.get<Product>(this.baseApiUrl + '/product/' + id);
   }
 
-  update(categoryEdit: Product) {
-    return this.http.post<Product>(this.baseApiUrl + '/product/' + categoryEdit.id, categoryEdit);
+  update(product: Product) {
+    return this.http.post<Product>(this.baseApiUrl + '/product/' + product.id, product);
   }
 
   delete(id: number) {

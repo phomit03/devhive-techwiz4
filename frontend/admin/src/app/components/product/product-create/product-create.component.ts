@@ -25,22 +25,36 @@ export class ProductCreateComponent {
     status: 0
   }
 
+  selectedImage: File | null = null; 
+
   constructor(
     private router: Router,
     private services: ProductService
   ) {}
 
   create() {
-    this.services.create(this.productCreate).subscribe({
-      next: (response) => {
+    if (!this.selectedImage) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Please select an image',
+      });
+      return;
+    }
+
+    this.services.create(this.productCreate, this.selectedImage).subscribe({
+      next: () => {
         this.router.navigate(['/product'])
       },
-      error: (error) => {
+      error: () => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
         });
       }
-    })
+    });
+  }
+
+  onImageSelected(event: any) {
+    this.selectedImage = event.target.files[0];
   }
 }
