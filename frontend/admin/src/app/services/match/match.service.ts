@@ -19,7 +19,15 @@ export class MatchService {
     return this.http.get<Match>(this.baseApiUrl + '/match/' + id);
   }
 
-  create() {
-    return;
+  create(matchCreate: Match) {
+    return this.http.post<Match>(this.baseApiUrl + '/match/create', matchCreate);
+  }
+
+  update(matchEdit: Match) {
+    return this.http.post<Match>(this.baseApiUrl + '/match/' + matchEdit.id, matchEdit);
+  }
+
+  delete(id: number) {
+    return this.http.delete<Match>(this.baseApiUrl + '/match/' + id);
   }
 }

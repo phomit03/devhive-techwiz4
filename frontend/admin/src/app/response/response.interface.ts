@@ -1,4 +1,5 @@
 import { Category } from "./category-response.interface";
+import { UserResponse } from "./login-response.interface";
 
 export interface Product {
   id: number;
@@ -27,4 +28,30 @@ export interface Team {
   logoImage: string;
   status: number;
   matches: Match[];
+}
+
+export interface Player {
+  id: number;
+  name: string;
+  dateOfBirth: string;
+  nationality: string;
+  position: string;
+  achievements: string;
+  status: number;
+  team: Team;
+}
+
+export interface News {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+}
+
+export interface Order {
+  id: number;
+  user: UserResponse;
+  totalPrice: number;
+  status: number;
+  orderProducts: any[];
 }
