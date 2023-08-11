@@ -2,9 +2,6 @@ package com.example.devhive_backend.service;
 
 import com.example.devhive_backend.dto.CategoryDTO;
 import com.example.devhive_backend.entity.Category;
-import com.example.devhive_backend.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

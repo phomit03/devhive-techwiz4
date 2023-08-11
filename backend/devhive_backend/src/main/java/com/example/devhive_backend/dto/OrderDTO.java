@@ -1,6 +1,5 @@
 package com.example.devhive_backend.dto;
 
-import com.example.devhive_backend.entity.OrderProduct;
 import com.example.devhive_backend.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

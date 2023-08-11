@@ -1,10 +1,7 @@
 package com.example.devhive_backend.mapper;
 
 import com.example.devhive_backend.dto.PlayerDTO;
-import com.example.devhive_backend.dto.ProductDTO;
 import com.example.devhive_backend.entity.Player;
-import com.example.devhive_backend.entity.Product;
-
 public class PlayerMapper {
     public static Player mapToPlayer(PlayerDTO playerDTO) {
         return Player.builder()

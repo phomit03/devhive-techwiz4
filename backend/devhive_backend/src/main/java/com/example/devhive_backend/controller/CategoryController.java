@@ -1,13 +1,10 @@
 package com.example.devhive_backend.controller;
 
 import com.example.devhive_backend.dto.CategoryDTO;
-import com.example.devhive_backend.entity.Category;
 import com.example.devhive_backend.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

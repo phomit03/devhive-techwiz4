@@ -2,12 +2,8 @@ package com.example.devhive_backend.service.impl;
 
 import com.example.devhive_backend.dto.CategoryDTO;
 import com.example.devhive_backend.entity.Category;
-import com.example.devhive_backend.entity.User;
-import com.example.devhive_backend.mapper.CategoryMapper;
 import com.example.devhive_backend.repository.CategoryRepository;
 import com.example.devhive_backend.service.CategoryService;
-import org.hibernate.Cache;
-import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +21,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<CategoryDTO> getAllCategories() {
         List<Category> categories = categoryRepository.findAll();
-        return categories.stream().map((club) -> mapToCategoryDto(club)).collect(Collectors.toList());
+        return categories.stream().map((category) -> mapToCategoryDto(category)).collect(Collectors.toList());
     }
 
     @Override

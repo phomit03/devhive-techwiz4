@@ -1,8 +1,6 @@
 package com.example.devhive_backend.mapper;
 
-import com.example.devhive_backend.dto.CategoryDTO;
 import com.example.devhive_backend.dto.TeamDTO;
-import com.example.devhive_backend.entity.Category;
 import com.example.devhive_backend.entity.Team;
 
 import java.util.stream.Collectors;
