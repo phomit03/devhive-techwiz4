@@ -3,6 +3,8 @@ package com.example.devhive_backend.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -15,9 +17,9 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String date;
+    private LocalDate date;
 
-    private String time;
+    private LocalTime time;
 
     private String score;
 

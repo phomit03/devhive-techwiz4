@@ -3,6 +3,7 @@ package com.example.devhive_backend.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -17,7 +18,7 @@ public class Player {
     private String name;
 
     @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    private LocalDateTime dateOfBirth;
 
     private String nationality;
 
