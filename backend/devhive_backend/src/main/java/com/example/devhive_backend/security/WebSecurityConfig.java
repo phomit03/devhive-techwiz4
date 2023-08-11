@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -45,10 +47,16 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
       return authProvider;
   }
 
-  
+
   @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-    return authConfig.getAuthenticationManager();
+  public AuthenticationManager authenticationManager(
+          UserDetailsService userDetailsService,
+          PasswordEncoder passwordEncoder) {
+    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+    authenticationProvider.setUserDetailsService(userDetailsService);
+    authenticationProvider.setPasswordEncoder(passwordEncoder);
+
+    return new ProviderManager(authenticationProvider);
   }
 
   @Bean
@@ -59,29 +67,18 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
   
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http
-        .csrf(csrf -> csrf.disable())
-        .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(auth ->
-                 auth.antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/test/**").permitAll()
-                .antMatchers("/api/category/**").permitAll()
-                .antMatchers("/api/product/**").permitAll()
-                .antMatchers("/api/order/**").permitAll()
-                .antMatchers("/api/orderproduct/**").permitAll()
-                .antMatchers("/api/new/**").permitAll()
-                .antMatchers("/api/match/**").permitAll()
-                .antMatchers("/api/player/**").permitAll()
-                .antMatchers("/api/feedback/**").permitAll()
-                .anyRequest()
-                .authenticated()
-        );
-    
-    http.authenticationProvider(authenticationProvider());
-
+    http.csrf().ignoringAntMatchers("/**");
+    http.httpBasic().authenticationEntryPoint(unauthorizedHandler);
+    http.authorizeRequests()
+            .antMatchers("/api/auth/**").permitAll()
+            .antMatchers("/api/new/**").hasAnyRole("ADMIN")
+            .anyRequest().authenticated()
+            .and().csrf().disable();
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    
+    http.sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    http.cors();
+
     return http.build();
   }
 }
