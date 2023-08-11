@@ -1,22 +1,24 @@
 package com.example.devhive_backend.dto;
 
-import com.example.devhive_backend.entity.Match;
+import com.example.devhive_backend.entity.OrderProduct;
+import com.example.devhive_backend.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamDTO {
+public class OrderDTO {
     private Long id;
-    private String name;
-    private String country;
-    private String logoImage;
+    private User user;
+    private BigDecimal totalPrice;
     private Integer status;
-    private List<MatchDTO> matches;
+    private List<OrderProductDTO> orderProducts;
+
 }

@@ -22,16 +22,13 @@ public class Player {
 
     private String nationality;
 
-    @Column(name = "team_id")
-    private Long teamId;
-
     private String position;
 
     private String achievements;
 
     private Integer status;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
     private Team team;
 }
