@@ -1,24 +1,18 @@
-package com.example.devhive_backend.entity;
+package com.example.devhive_backend.dto;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.persistence.Entity;
-
+import javax.persistence.Column;
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "news")
-public class New {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class NewDTO {
     private Long id;
     private String title;
     private String image;
-
-    @Column(columnDefinition = "TEXT")
     private String description;
 }

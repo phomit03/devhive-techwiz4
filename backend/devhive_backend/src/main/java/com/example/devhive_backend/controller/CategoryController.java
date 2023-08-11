@@ -30,20 +30,20 @@ public class CategoryController {
         return new ResponseEntity<>(categoryById,HttpStatus.OK);
     }
     @PostMapping("/create")
-    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<String> createCategory(@RequestBody CategoryDTO categoryDTO) {
         categoryService.createCategory(categoryDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>("Category created successfully",HttpStatus.CREATED);
     }
     @PostMapping("/{id}")
-    public ResponseEntity<CategoryDTO> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<String> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryDTO categoryDTO) {
         categoryDTO.setId(id);
         categoryService.updateCategory(categoryDTO);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>("Category updated successfully",HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategory(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deleteCategory(@PathVariable("id") Long id) {
         categoryService.deleteCategory(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>("Category delete successfully",HttpStatus.OK);
     }
 
 }
