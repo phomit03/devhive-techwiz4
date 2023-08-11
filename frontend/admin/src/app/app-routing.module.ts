@@ -39,7 +39,7 @@ const routes: Routes = [
 
     {path: 'category', component: CategoryListComponent},
     {path: 'category/create', component: CategoryCreateComponent},
-    {path: 'category/edit', component: CategoryEditComponent},
+    {path: 'category/edit/:id', component: CategoryEditComponent},
 
     {path: 'match', component: MatchListComponent},
     {path: 'match/create', component: MatchCreateComponent},
