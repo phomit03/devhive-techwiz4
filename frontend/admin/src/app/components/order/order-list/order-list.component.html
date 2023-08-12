@@ -16,14 +16,18 @@
           </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-          <tr>
-            <td><strong>1</strong></td>
-            <td>Ao dau clb Real</td>
+          <tr *ngFor="let order of orders">
+            <td><strong>{{ order.id }}</strong></td>
+            <td>{{ order.user.username }}</td>
             <td>
-              20$
+              {{ order.totalPrice }}$
             </td>
-            <td>Fashion</td>
-            <td><span class="badge bg-label-primary me-1">Active</span></td>
+            <td>
+              <span class="badge bg-label-warning me-1" *ngIf="order.status == 1">Processing</span>
+              <span class="badge bg-label-primary me-1" *ngIf="order.status == 2">Delivering</span>
+              <span class="badge bg-label-success me-1" *ngIf="order.status == 3">Success</span>
+              <span class="badge bg-label-success me-1" *ngIf="order.status == 4">Canceled</span>
+            </td>
             <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

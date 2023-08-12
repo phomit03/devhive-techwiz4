@@ -10,12 +10,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent {  
-  order: Order[] = [];
+  orders: Order[] = [];
   constructor(private router: Router, private orderService: OrderService) {}
   ngOnInit() : void {
     this.orderService.getAll().subscribe({
       next: (response) => {
-        this.order = response;
+        this.orders = response;
       },
       error: (error) => {
 

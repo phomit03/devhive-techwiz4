@@ -21,18 +21,34 @@ export class OrderService {
   }
 
   getById(id: number) : Observable<Order> {
-    return this.http.get<Order>(this.baseApiUrl + '/order/' + id);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Order>(this.baseApiUrl + '/order/' + id, {headers});
   }
 
   create(orderCreate: Order) {
-    return this.http.post<Order>(this.baseApiUrl + '/order/create', orderCreate);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Order>(this.baseApiUrl + '/order/create', orderCreate, {headers});
   }
 
   update(orderEdit: Order) {
-    return this.http.post<Order>(this.baseApiUrl + '/order/' + orderEdit.id, orderEdit);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Order>(this.baseApiUrl + '/order/' + orderEdit.id, orderEdit, {headers});
   }
 
   delete(id: number) {
-    return this.http.delete<Order>(this.baseApiUrl + '/order/' + id);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<Order>(this.baseApiUrl + '/order/' + id, {headers});
   }
 }
