@@ -8,18 +8,21 @@
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">Team name <span style="color: red">*</span></label>
-              <input type="text" name="team" class="form-control" required/>
+              <input type="text" [(ngModel)]="teamCreate.name" name="team" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">Country <span style="color: red">*</span></label>
-              <input type="text" name="country" class="form-control" required/>
+              <input type="text" [(ngModel)]="teamCreate.country" name="country" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">Logo Image <span style="color: red">*</span></label>
-              <input class="form-control" name="logo_image" type="file" id="formFile" required>
+              <span>
+                Upload ảnh tại: <a href="https://imgur.com/upload" target="_blank">imgurl.com</a>
+              </span>
+              <input class="form-control" [(ngModel)]="teamCreate.logoImage" name="logo_image" type="text" id="formFile" required>
             </div>
             <div>
-              <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+              <button (click)="create()" class="btn btn-primary" style="float: right">Submit</button>
             </div>
           </div>
         </div>

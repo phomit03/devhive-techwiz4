@@ -22,22 +22,26 @@
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-            <tr>
-              <td><strong>1</strong></td>
-              <td>Real Madrid</td>
-              <td>TBN</td>
+            <tr *ngFor="let team of teams">
+              <td><strong>{{ team.id }}</strong></td>
+              <td>{{ team.name }}</td>
+              <td>{{ team.country }}</td>
               <td>
-                  <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c7/Logo_Real_Madrid.svg/1200px-Logo_Real_Madrid.svg.png"
+                  <img src="{{ team.logoImage }}"
                        alt="Avatar" style="width: 40px; height: 40px">
               </td>
-              <td><span class="badge bg-label-primary me-1">Active</span></td>
+              <td>
+                <span [ngClass]="team.status === 1 ? 'badge bg-label-primary me-1' : 'badge bg-label-secondary me-1'">
+                  {{ team.status === 1 ? 'Active' : 'Inactive' }}
+                </span>
+              </td>
               <td>
                 <div class="dropdown">
                   <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                     <i class="bx bx-dots-vertical-rounded"></i>
                   </button>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="../manage-edit/team-edit.html"
+                    <a class="dropdown-item" routerLink="/team/edit/{{ team.id }}"
                       ><i class="bx bx-edit-alt me-1"></i> Edit</a
                     >
                     <a class="dropdown-item" href="javascript:void(0);"

@@ -21,18 +21,34 @@ export class TeamService {
   }
 
   getById(id: number) : Observable<Team> {
-    return this.http.get<Team>(this.baseApiUrl + '/team/' + id);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Team>(this.baseApiUrl + '/team/' + id, {headers});
   }
 
   create(teamCreate: Team) {
-    return this.http.post<Team>(this.baseApiUrl + '/team/create', teamCreate);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Team>(this.baseApiUrl + '/team/create', teamCreate, {headers});
   }
 
   update(teamEdit: Team) {
-    return this.http.post<Team>(this.baseApiUrl + '/team/' + teamEdit.id, teamEdit);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Team>(this.baseApiUrl + '/team/' + teamEdit.id, teamEdit, {headers});
   }
 
   delete(id: number) {
-    return this.http.delete<Team>(this.baseApiUrl + '/team/' + id);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<Team>(this.baseApiUrl + '/team/' + id, {headers});
   }
 }

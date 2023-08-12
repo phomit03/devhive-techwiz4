@@ -43,7 +43,7 @@ const routes: Routes = [
 
     {path: 'match', component: MatchListComponent},
     {path: 'match/create', component: MatchCreateComponent},
-    {path: 'match/edit', component: MatchEditComponent},
+    {path: 'match/edit/:id', component: MatchEditComponent},
 
     {path: 'news', component: NewsListComponent},
     {path: 'news/create', component: NewsCreateComponent},
@@ -51,7 +51,7 @@ const routes: Routes = [
 
     {path: 'player', component: PlayerListComponent},
     {path: 'player/create', component: PlayerCreateComponent},
-    {path: 'player/edit', component: PlayerEditComponent},
+    {path: 'player/edit/:id', component: PlayerEditComponent},
 
     {path: 'product', component: ProductListComponent},
     {path: 'product/create', component: ProductCreateComponent},
@@ -59,15 +59,15 @@ const routes: Routes = [
 
     {path: 'team', component: TeamListComponent},
     {path: 'team/create', component: TeamCreateComponent},
-    {path: 'team/edit', component: TeamEditComponent},
+    {path: 'team/edit/:id', component: TeamEditComponent},
 
     {path: 'user', component: UserListComponent},
     {path: 'user/create', component: UserCreateComponent},
-    {path: 'user/edit', component: UserEditComponent},
+    {path: 'user/edit/:id', component: UserEditComponent},
 
     {path: 'order', component: OrderListComponent},
     {path: 'order/create', component: OrderEditComponent},
-    {path: 'order/edit', component: OrderEditComponent},
+    {path: 'order/edit/:id', component: OrderEditComponent},
   ]}
 ];
 
