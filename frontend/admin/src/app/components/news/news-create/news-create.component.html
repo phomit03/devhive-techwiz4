@@ -8,18 +8,21 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label">TITLE <span style="color: red">*</span></label>
-                        <input type="text" name="title" class="form-control" required/>
+                        <input type="text" [(ngModel)]="newsCreate.title" name="title" class="form-control" required/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">IMAGE <span style="color: red">*</span></label>
-                        <input class="form-control" name="image" type="file" required>
-                    </div>
+                        <label class="form-label">Image <span style="color: red">*</span></label>
+                        <span>
+                          Upload ảnh tại: <a href="https://imgur.com/upload" target="_blank">imgurl.com</a>
+                        </span>
+                        <input class="form-control" name="image" type="text" [(ngModel)]="newsCreate.image" required>
+                      </div>
                     <div class="mb-3">
                         <label class="form-label">DESCRIPTION <span style="color: red">*</span></label>
-                        <textarea id="description-ckeditor"></textarea>
+                        <input [(ngModel)]="newsCreate.description" name="description" type="text"  class="form-control">
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary" style="float: right">Submit
+                        <button (click)="create()" class="btn btn-primary" style="float: right">Submit
                         </button>
                     </div>
                 </div>

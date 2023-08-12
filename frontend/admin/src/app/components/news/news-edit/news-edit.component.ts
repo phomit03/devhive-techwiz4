@@ -9,7 +9,7 @@ import { NewsService } from 'src/app/services/news/news.service';
   styleUrls: ['./news-edit.component.css']
 })
 export class NewsEditComponent {
-  news: News = {
+  new: News = {
     id: 0,
     title: '',
     image: '',
@@ -30,7 +30,7 @@ export class NewsEditComponent {
         if (id) {
           this.newsService.getById(parseInt(id)).subscribe({
             next: (response) => {
-              this.news = response;
+              this.new = response;
             }
           });
         }
@@ -39,8 +39,8 @@ export class NewsEditComponent {
   }
 
   update() {
-    this.newsService.update(this.news).subscribe({
-      next: () => {
+    this.newsService.update(this.new).subscribe({
+      next: (response) => {
         this.router.navigate(['/news']);
       }
     });

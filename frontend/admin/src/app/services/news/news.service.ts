@@ -17,22 +17,38 @@ export class NewsService {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.get<News[]>(this.baseApiUrl + '/news/getAll', {headers})
+    return this.http.get<News[]>(this.baseApiUrl + '/new/getAll', {headers})
   }
 
   getById(id: number) : Observable<News> {
-    return this.http.get<News>(this.baseApiUrl + '/news/' + id);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<News>(this.baseApiUrl + '/new/' + id, {headers});
   }
 
   create(newsCreate: News) {
-    return this.http.post<News>(this.baseApiUrl + '/news/create', newsCreate);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<News>(this.baseApiUrl + '/new/create', newsCreate, {headers});
   }
 
   update(newsEdit: News) {
-    return this.http.post<News>(this.baseApiUrl + '/news/' + newsEdit.id, newsEdit);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<News>(this.baseApiUrl + '/new/' + newsEdit.id, newsEdit, {headers});
   }
 
   delete(id: number) {
-    return this.http.delete<News>(this.baseApiUrl + '/news/' + id);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<News>(this.baseApiUrl + '/new/' + id, {headers});
   }
 }

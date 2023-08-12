@@ -8,18 +8,21 @@
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">TITLE <span style="color: red">*</span></label>
-              <input type="text" name="title" class="form-control" required/>
+              <input type="text" [(ngModel)]="new.title" name="title" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">IMAGE <span style="color: red">*</span></label>
-              <input class="form-control" name="image" type="file" required>
+              <span>
+                Upload ảnh tại: <a href="https://imgur.com/upload" target="_blank">imgurl.com</a>
+              </span>
+              <input class="form-control" [(ngModel)]="new.image" name="image" type="text" required>
             </div>
             <div class="mb-3">
               <label class="form-label">DESCRIPTION <span style="color: red">*</span></label>
-              <input type="text" name="description" class="form-control" required/>
+              <input type="text" [(ngModel)]="new.description" name="description" class="form-control" required/>
             </div>
             <div>
-              <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+              <button (click)="update()" class="btn btn-primary" style="float: right">Submit</button>
             </div>
           </div>
         </div>
