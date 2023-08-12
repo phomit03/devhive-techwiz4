@@ -35,22 +35,13 @@ export class ProductService {
   //   return this.http.request(req);
   // }
 
-  create(productDTO: Product, imageFile: File): Observable<MessageResponse> {
+  create(productDTO: Product): Observable<MessageResponse> {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
   
-    const formData = new FormData();
-    formData.append('name', productDTO.name);
-    formData.append('quantity', productDTO.quantity);
-    formData.append('price', productDTO.price.toString());
-    formData.append('category', productDTO.category.id.toString());
-    formData.append('status', productDTO.status.toString());
-    formData.append('image', productDTO.image.toString());
-    formData.append('imageFile', imageFile);
-  
-    return this.http.post<MessageResponse>(`${this.baseApiUrl}/product/create`, formData, { headers });
+    return this.http.post<MessageResponse>(`${this.baseApiUrl}/product/create`, productDTO, { headers });
   }
 
   getAll() : Observable<Product[]> {

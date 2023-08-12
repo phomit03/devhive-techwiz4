@@ -12,7 +12,10 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Image <span style="color: red">*</span></label>
-              <input (change)="onImageSelected($event)" class="form-control" name="image" type="file" required>
+              <span>
+                Upload ảnh tại: <a href="https://imgur.com/upload">imgurl.com</a>
+              </span>
+              <input class="form-control" name="image" type="text" [(ngModel)]="productCreate.image" required>
             </div>
             <div class="mb-3">
               <label class="form-label">Quantity <span style="color: red">*</span></label>
