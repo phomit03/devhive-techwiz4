@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Player, Team } from 'src/app/response/response.interface'; 
 import { PlayerService } from 'src/app/services/player/player.service';
+import { TeamService } from 'src/app/services/team/team.service';
 
 @Component({
   selector: 'app-player-create',
@@ -26,13 +27,21 @@ export class PlayerCreateComponent implements OnInit {
       matches: []
     }
   };
+  teams: Team[] = [];
 
   constructor(
     private router: Router,
-    private playerService: PlayerService
+    private playerService: PlayerService,
+    private teamService: TeamService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.teamService.getAll().subscribe({
+      next: (response) => {
+        this.teams = response
+      }
+    })
+  }
 
   create() {
     this.playerService.create(this.newPlayer).subscribe({

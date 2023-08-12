@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Player } from 'src/app/response/response.interface';
@@ -7,7 +8,8 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.component.html',
-  styleUrls: ['./player-list.component.css']
+  styleUrls: ['./player-list.component.css'],
+  providers: [DatePipe]
 })
 export class PlayerListComponent implements OnInit {  
   players: Player[] = [];

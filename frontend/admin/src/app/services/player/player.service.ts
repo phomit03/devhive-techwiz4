@@ -21,11 +21,19 @@ export class PlayerService {
   }
 
   getById(id: number) : Observable<Player> {
-    return this.http.get<Player>(this.baseApiUrl + '/player/' + id);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Player>(this.baseApiUrl + '/player/' + id, {headers});
   }
 
   create(playerCreate: Player) {
-    return this.http.post<Player>(this.baseApiUrl + '/player/create', playerCreate);
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Player>(this.baseApiUrl + '/player/create', playerCreate, {headers});
   }
 
   update(playerEdit: Player) {

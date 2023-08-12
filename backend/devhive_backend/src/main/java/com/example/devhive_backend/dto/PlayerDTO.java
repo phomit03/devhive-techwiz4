@@ -6,7 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.util.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 public class PlayerDTO {
     private Long id;
     private String name;
-    private LocalDateTime dateOfBirth;
+    private Date dateOfBirth;
     private String nationality;
     private String position;
     private String achievements;
