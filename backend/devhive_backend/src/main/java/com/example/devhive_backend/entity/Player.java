@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class Player {
     private String name;
 
     @Column(name = "date_of_birth")
-    private LocalDateTime dateOfBirth;
+    private Date dateOfBirth;
 
     private String nationality;
 
@@ -27,7 +29,7 @@ public class Player {
 
     private Integer status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private Team team;
 }

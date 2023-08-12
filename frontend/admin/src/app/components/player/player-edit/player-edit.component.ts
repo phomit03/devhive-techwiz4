@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Player } from 'src/app/response/response.interface'; 
+import { Player, Team } from 'src/app/response/response.interface'; 
 import { PlayerService } from 'src/app/services/player/player.service';
+import { TeamService } from 'src/app/services/team/team.service';
 
 @Component({
   selector: 'app-player-edit',
@@ -26,11 +27,13 @@ export class PlayerEditComponent implements OnInit {
       matches: []
     }
   };
+  teams: Team[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private playerService: PlayerService
+    private playerService: PlayerService,
+    private teamService: TeamService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +50,12 @@ export class PlayerEditComponent implements OnInit {
         }
       }
     });
+
+    this.teamService.getAll().subscribe({
+      next: (response) => {
+        this.teams = response
+      }
+    })
   }
 
   update() {

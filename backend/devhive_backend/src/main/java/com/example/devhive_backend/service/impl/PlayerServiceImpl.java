@@ -7,6 +7,7 @@ import com.example.devhive_backend.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import static com.example.devhive_backend.mapper.PlayerMapper.mapToPlayer;
@@ -20,8 +21,27 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public List<PlayerDTO> getAllMultiplayer() {
         List<Player> multiPlayer = playerRepository.findAll();
-        return multiPlayer.stream().map((player) -> mapToPlayerDTO(player)).collect(Collectors.toList());
+        List<PlayerDTO> playerDTOList = this.transfer(multiPlayer);
+        return playerDTOList;
     }
+
+    private List<PlayerDTO> transfer(List<Player> players) {
+        List<PlayerDTO> playerDTOList = new ArrayList<>();
+        for (Player player : players) {
+            PlayerDTO playerDTO = new PlayerDTO();
+            playerDTO.setId(player.getId());
+            playerDTO.setName(player.getName());
+            playerDTO.setNationality(player.getNationality());
+            playerDTO.setDateOfBirth(player.getDateOfBirth());
+            playerDTO.setPosition(player.getPosition());
+            playerDTO.setAchievements(player.getAchievements());
+            playerDTO.setStatus(player.getStatus());
+            playerDTO.setTeam(player.getTeam());
+            playerDTOList.add(playerDTO);
+        }
+        return playerDTOList;
+    }
+
 
     @Override
     public PlayerDTO getPlayerById(Long id) {

@@ -8,34 +8,33 @@
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">PLAYER NAME <span style="color: red">*</span></label>
-              <input type="text" name="name" class="form-control" required/>
+              <input type="text" [(ngModel)]="newPlayer.name" name="name" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">DATE OF BIRTH <span style="color: red">*</span></label>
-              <input type="date" name="date_of_birth" class="form-control" required/>
+              <input type="date" [(ngModel)]="newPlayer.dateOfBirth" name="date_of_birth" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">NATIONALITY <span style="color: red">*</span></label>
-              <input type="text" name="nationality" class="form-control" required/>
+              <input type="text" [(ngModel)]="newPlayer.nationality" name="nationality" class="form-control" required/>
             </div>
             <div class="mb-3">
-              <label class="form-label">TEAM NAME <span style="color: red">*</span></label>
-              <select id="defaultSelect" name="team_id" class="form-select">
-                <option>Please choose</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
+              <label class="form-label">TEAM<span style="color: red">*</span></label>
+              <select name="team_id" [(ngModel)]="newPlayer.team.id" class="form-select">
+                <option value="" selected>Please choose</option>
+                <option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
               </select>
             </div>
             <div class="mb-3">
               <label class="form-label">POSITION <span style="color: red">*</span></label>
-              <input type="text" name="position" class="form-control" required/>
+              <input type="text" [(ngModel)]="newPlayer.position" name="position" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">ACHIEVEMENTS <span style="color: red">*</span></label>
-              <input type="text" name="achievements" class="form-control" required/>
+              <input type="text" [(ngModel)]="newPlayer.achievements" name="achievements" class="form-control" required/>
             </div>
             <div>
-              <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+              <button (click)="create()" class="btn btn-primary" style="float: right">Submit</button>
             </div>
           </div>
         </div>
