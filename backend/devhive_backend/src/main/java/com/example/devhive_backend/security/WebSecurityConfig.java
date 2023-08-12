@@ -78,6 +78,8 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/new/create").hasAnyRole("ADMIN","USER")
             .mvcMatchers(HttpMethod.POST,"/api/new/{id}").hasAnyRole("ADMIN")
             .mvcMatchers(HttpMethod.DELETE,"/api/new/{id}").hasAnyRole("ADMIN")
+            // tim 3 bai bao
+            .mvcMatchers(HttpMethod.GET,"/api/new/latest").hasAnyRole("ADMIN","USER")
             //category
             .antMatchers("/api/category/getAll").hasAnyRole("ADMIN","USER")
             .mvcMatchers(HttpMethod.GET,"/api/category/{id}").hasAnyRole("ADMIN","USER")
@@ -94,6 +96,9 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/match/create").hasAnyRole("ADMIN","USER")
             .mvcMatchers(HttpMethod.POST,"/api/match/{id}").hasAnyRole("ADMIN")
             .mvcMatchers(HttpMethod.DELETE,"/api/match/{id}").hasAnyRole("ADMIN")
+            //search tran dau
+            .mvcMatchers(HttpMethod.GET,"/api/latest-finished-match").hasAnyRole("ADMIN","USER")
+
             //order
             .antMatchers("/api/order/getAll").hasAnyRole("ADMIN","USER")
             .mvcMatchers(HttpMethod.GET,"/api/order/{id}").hasAnyRole("ADMIN","USER")

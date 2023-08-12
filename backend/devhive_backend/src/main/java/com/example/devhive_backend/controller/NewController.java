@@ -1,6 +1,7 @@
 package com.example.devhive_backend.controller;
 
 import com.example.devhive_backend.dto.NewDTO;
+import com.example.devhive_backend.entity.NewEntity;
 import com.example.devhive_backend.service.NewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,5 +42,12 @@ public class NewController {
         newService.deleteNew(id);
         return new ResponseEntity<>("New delete successfully",HttpStatus.OK);
     }
+
+    @GetMapping("/latest")
+    public ResponseEntity<List<NewDTO>> getLatestNews(@RequestParam("count") int count) {
+        List<NewDTO> latestNews = newService.getLatestNews(count);
+        return new ResponseEntity<>(latestNews, HttpStatus.OK);
+    }
+
 
 }

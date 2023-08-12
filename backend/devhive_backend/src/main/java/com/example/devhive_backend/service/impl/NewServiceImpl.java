@@ -1,10 +1,11 @@
 package com.example.devhive_backend.service.impl;
 
 import com.example.devhive_backend.dto.NewDTO;
-import com.example.devhive_backend.entity.New;
+import com.example.devhive_backend.entity.NewEntity;
 import com.example.devhive_backend.repository.NewRepository;
 import com.example.devhive_backend.service.NewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,29 +21,37 @@ public class NewServiceImpl implements NewService {
 
     @Override
     public List<NewDTO> getAllNews() {
-        List<New> news = newRepository.findAll();
+        List<NewEntity> news = newRepository.findAll();
         return news.stream().map((anew) -> mapToNewDTO(anew)).collect(Collectors.toList());
     }
     @Override
     public NewDTO getNewById(Long id) {
-        New anew =  newRepository.findById(id).get();
+        NewEntity anew =  newRepository.findById(id).get();
         return mapToNewDTO(anew);
     }
 
     @Override
-    public New createNew(NewDTO newDTO) {
-        New anew = mapToNew(newDTO);
+    public NewEntity createNew(NewDTO newDTO) {
+        NewEntity anew = mapToNew(newDTO);
         return newRepository.save(anew);
     }
 
     @Override
     public void updateNew(NewDTO newDTO) {
-        New anew = mapToNew(newDTO);
+        NewEntity anew = mapToNew(newDTO);
         newRepository.save(anew);
     }
 
     @Override
     public void deleteNew(Long id) {
         newRepository.deleteById(id);
+    }
+
+    @Override
+    public List<NewDTO> getLatestNews(int count) {
+        List<NewEntity> latestNews = newRepository.findTopNByOrderByCreatedAtDesc(count);
+        return latestNews.stream()
+                .map(anew -> mapToNewDTO(anew))
+                .collect(Collectors.toList());
     }
 }

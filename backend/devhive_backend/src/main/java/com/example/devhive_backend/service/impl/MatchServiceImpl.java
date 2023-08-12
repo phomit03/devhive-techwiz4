@@ -45,4 +45,13 @@ public class MatchServiceImpl implements MatchService {
     public void deleteMatch(Long id) {
         matchRepository.deleteById(id);
     }
+
+    @Override
+    public MatchDTO getLatestFinishedMatch() {
+        Match match = matchRepository.findLatestFinishedMatch();
+        if (match != null) {
+            return mapToMatchDTO(match);
+        }
+        return null;
+    }
 }

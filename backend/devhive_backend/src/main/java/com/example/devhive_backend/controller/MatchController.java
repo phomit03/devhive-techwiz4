@@ -40,4 +40,13 @@ public class MatchController {
         matchService.deleteMatch(id);
         return new ResponseEntity<>("Match delete successfully",HttpStatus.OK);
     }
+
+    @GetMapping("/latest-finished-match")
+    public ResponseEntity<MatchDTO> getLatestFinishedMatch() {
+        MatchDTO latestFinishedMatch = matchService.getLatestFinishedMatch();
+        if (latestFinishedMatch != null) {
+            return new ResponseEntity<>(latestFinishedMatch, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

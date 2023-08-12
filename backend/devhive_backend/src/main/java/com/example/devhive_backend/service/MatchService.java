@@ -15,4 +15,6 @@ public interface MatchService {
     void updateMatch(MatchDTO matchDTO);
 
     void deleteMatch(Long id);
+
+    MatchDTO getLatestFinishedMatch();
 }

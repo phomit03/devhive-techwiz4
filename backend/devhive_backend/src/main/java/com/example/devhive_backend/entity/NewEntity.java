@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "news")
-public class New {
+public class NewEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,4 +22,6 @@ public class New {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 }
