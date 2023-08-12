@@ -8,26 +8,29 @@
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">Team name <span style="color: red">*</span></label>
-              <input type="text" name="team" class="form-control" required/>
+              <input type="text" [(ngModel)]="team.name" name="team" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">Country <span style="color: red">*</span></label>
-              <input type="text" name="country" class="form-control" required/>
+              <input type="text" [(ngModel)]="team.country" name="country" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">Logo Image <span style="color: red">*</span></label>
-              <input class="form-control" name="logo_image" type="file" id="formFile" required>
+              <span>
+                Upload ảnh tại: <a href="https://imgur.com/upload" target="_blank">imgurl.com</a>
+              </span>
+              <input class="form-control" [(ngModel)]="team.logoImage" name="logo_image" type="text" id="formFile" required>
+              <img src="{{team.logoImage}}" alt="" style="width: 100px; margin: 10px 0px;">
             </div>
             <div class="mb-3">
-              <label class="form-label">status <span style="color: red">*</span></label>
-              <select id="defaultSelect" name="status" class="form-select">
-                <option>Please choose</option>
-                <option value="1" selected>active</option>
-                <option value="2">deactive</option>
+              <label class="form-label">Status <span style="color: red">*</span></label>
+              <select id="defaultSelect" name="status" class="form-select" [(ngModel)]="team.status">
+                <option [ngValue]="1">Active</option>
+                <option [ngValue]="0">Deactive</option>
               </select>
             </div>
             <div>
-              <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+              <button (click)="update()" class="btn btn-primary" style="float: right">Submit</button>
             </div>
           </div>
         </div>

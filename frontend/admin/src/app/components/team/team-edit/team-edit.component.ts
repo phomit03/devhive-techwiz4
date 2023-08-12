@@ -43,7 +43,7 @@ export class TeamEditComponent implements OnInit {
   update() {
     this.teamService.update(this.team).subscribe({
       next: () => {
-        this.router.navigate(['/teams']); // Thay đường dẫn phù hợp
+        this.router.navigate(['/teams']);
       }
     });
   }

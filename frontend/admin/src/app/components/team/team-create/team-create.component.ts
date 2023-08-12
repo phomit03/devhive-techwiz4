@@ -27,14 +27,9 @@ export class TeamCreateComponent {
   create() {
     this.teamService.create(this.teamCreate).subscribe({
       next: () => {
-        this.router.navigate(['/teams']);
       },
       error: () => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Failed to create team.',
-        });
+        this.router.navigate(['/teams']);
       }
     });
   }
