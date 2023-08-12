@@ -47,7 +47,7 @@ const routes: Routes = [
 
     {path: 'news', component: NewsListComponent},
     {path: 'news/create', component: NewsCreateComponent},
-    {path: 'news/edit', component: NewsEditComponent},
+    {path: 'news/edit/:id', component: NewsEditComponent},
 
     {path: 'player', component: PlayerListComponent},
     {path: 'player/create', component: PlayerCreateComponent},
