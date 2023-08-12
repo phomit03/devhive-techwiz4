@@ -31,16 +31,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product createProduct(ProductDTO productDTO, MultipartFile image) {
-        Product product = mapToProduct(productDTO, image);
+    public Product createProduct(ProductDTO productDTO) {
+        Product product = mapToProduct(productDTO);
         return productRepository.save(product);
     }
 
 
 
     @Override
-    public void updateProduct(ProductDTO productDTO, MultipartFile image) {
-        Product product = mapToProduct(productDTO, image);
+    public void updateProduct(ProductDTO productDTO) {
+        Product product = mapToProduct(productDTO);
         productRepository.save(product);
     }
 

@@ -29,14 +29,14 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createProduct(@RequestBody ProductDTO productDTO, @RequestParam("image") MultipartFile image) {
-        productService.createProduct(productDTO, image);
+    public ResponseEntity<String> createProduct(@ModelAttribute ProductDTO productDTO) {
+        productService.createProduct(productDTO);
         return new ResponseEntity<>("Product created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")
-    public ResponseEntity<String> updateProduct(@PathVariable("id") Long id, @RequestBody ProductDTO productDTO, @RequestParam("image") MultipartFile image) {
+    public ResponseEntity<String> updateProduct(@PathVariable("id") Long id, @RequestBody ProductDTO productDTO) {
         productDTO.setId(id);
-        productService.updateProduct(productDTO, image);
+        productService.updateProduct(productDTO);
         return new ResponseEntity<>("Product updated successfully",HttpStatus.OK);
     }
     @DeleteMapping("/{id}")

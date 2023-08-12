@@ -7,25 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductMapper {
-    @Autowired
-    private static UploadImage uploadImage;
-    public static Product mapToProduct(ProductDTO productDTO, MultipartFile image) {
-        Product.ProductBuilder productBuilder = Product.builder()
+    public static Product mapToProduct(ProductDTO productDTO) {
+        return Product.builder()
                 .id(productDTO.getId())
                 .name(productDTO.getName())
+                .image(productDTO.getImage())
                 .quantity(productDTO.getQuantity())
                 .price(productDTO.getPrice())
                 .category(productDTO.getCategory())
-                .status(productDTO.getStatus());
-
-        String imagePath = uploadImage.uploadImage(image);
-        if (imagePath != null) {
-            productBuilder.image(imagePath);
-        } else {
-            productBuilder.image(productDTO.getImage());
-        }
-
-        return productBuilder.build();
+                .status(productDTO.getStatus())
+                .build();
     }
 
     public static ProductDTO mapToProductDTO(Product product) {
