@@ -23,25 +23,29 @@
           </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-          <tr>
-            <td><strong>1</strong></td>
-            <td>Ao dau clb Real</td>
+          <tr *ngFor="let product of products">
+            <td><strong>{{ product.id }}</strong></td>
+            <td>{{ product.name }}</td>
             <td>
-              <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSoHJHYBAqFoHhnapDSZzGZbkWKBhK2u54JvxMF7pcBrn4Z8uWfgueKyJ-5BrfHIkn_ov_ikPiavkK105k1HUoe6crj5KnXGunzEjVfKPQQcqvfO1yDQRYayho&usqp=CAc"
+              <img src="{{ product.image }}"
                      alt="Avatar" style="width: 70px; height: 70px">
             </td>
-            <td>1</td>
-            <td>20$</td>
-            <td>Fashion</td>
-            <td><span class="badge bg-label-primary me-1">Active</span></td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}$</td>
+            <td>{{ product.category.name }}</td>
+            <td>
+              <span [ngClass]="product.status === 1 ? 'badge bg-label-primary me-1' : 'badge bg-label-secondary me-1'">
+                {{ product.status === 1 ? 'Active' : 'Inactive' }}
+              </span>
+            </td>
             <td>
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" routerLink="/product/edit"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                  <a class="dropdown-item" routerLink="/product/edit/{{ product.id }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                  <a class="dropdown-item" (click)="delete(product.id)"><i class="bx bx-trash me-1"></i> Delete</a>
                 </div>
               </div>
             </td>

@@ -12,7 +12,6 @@ export class CategoryEditComponent {
   category: Category = {
     id: 0,
     name: '',
-    products: []
   }
 
   constructor (

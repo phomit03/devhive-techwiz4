@@ -1,6 +1,7 @@
 package com.example.devhive_backend.controller;
 
 import com.example.devhive_backend.dto.CategoryDTO;
+import com.example.devhive_backend.entity.Category;
 import com.example.devhive_backend.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,8 +16,8 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("getAll")
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
-        List<CategoryDTO> categories = categoryService.getAllCategories();
+    public ResponseEntity<List<Category>> getAllCategories() {
+        List<Category> categories = categoryService.getAllCategories();
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
     @GetMapping("/{id}")

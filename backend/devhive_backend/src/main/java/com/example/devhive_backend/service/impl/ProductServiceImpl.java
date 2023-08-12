@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,24 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> getAllProducts() {
         List<Product> products = productRepository.findAll();
-        return products.stream().map((product) -> mapToProductDTO(product)).collect(Collectors.toList());
+        List<ProductDTO> productDTOList = this.transfer(products);
+        return productDTOList;
+    }
+
+    private List<ProductDTO> transfer(List<Product> products) {
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        for (Product product : products) {
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setId(product.getId());
+            productDTO.setName(product.getName());
+            productDTO.setImage(product.getImage());
+            productDTO.setQuantity(product.getQuantity());
+            productDTO.setPrice(product.getPrice());
+            productDTO.setCategory(product.getCategory());
+            productDTO.setStatus(product.getStatus());
+            productDTOList.add(productDTO);
+        }
+        return productDTOList;
     }
 
     @Override

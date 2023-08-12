@@ -18,7 +18,6 @@ export class CategoryCreateComponent {
   categoryCreate: Category = {
     id: 0,
     name: '',
-    products: []
   }
 
   constructor(

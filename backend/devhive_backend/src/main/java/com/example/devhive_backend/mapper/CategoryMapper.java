@@ -21,7 +21,7 @@ public class CategoryMapper {
         CategoryDTO categoryDTO =CategoryDTO.builder()
                 .id(category.getId())
                 .name(category.getName())
-                .products(category.getProducts().stream().map((product) -> mapToProductDTO(product)).collect(Collectors.toList()))
+//                .products(category.getProducts().stream().map((product) -> mapToProductDTO(product)).collect(Collectors.toList()))
                 .build();
         return categoryDTO;
     }

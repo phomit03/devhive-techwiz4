@@ -23,7 +23,7 @@ export class ProductCreateComponent {
     image: '',
     quantity: '',
     price: 0,
-    category: { id: 0, name: '', products: [] },
+    category: { id: 0, name: ''},
     status: 1
   }
 
