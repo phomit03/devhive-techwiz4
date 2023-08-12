@@ -53,14 +53,12 @@ export class ProductCreateComponent {
     }
 
     this.services.create(this.productCreate).subscribe({
-      next: () => {
-        this.router.navigate(['/product'])
+      next: (response) => {
+        console.log(response);
+        
       },
       error: () => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-        });
+        this.router.navigate(['/product'])
       }
     });
   }
