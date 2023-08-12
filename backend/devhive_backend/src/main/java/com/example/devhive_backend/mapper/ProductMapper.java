@@ -2,11 +2,13 @@ package com.example.devhive_backend.mapper;
 
 import com.example.devhive_backend.dto.ProductDTO;
 import com.example.devhive_backend.entity.Product;
+import com.example.devhive_backend.repository.CategoryRepository;
 import com.example.devhive_backend.utils.UploadImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductMapper {
+    @Autowired
     public static Product mapToProduct(ProductDTO productDTO) {
         return Product.builder()
                 .id(productDTO.getId())
