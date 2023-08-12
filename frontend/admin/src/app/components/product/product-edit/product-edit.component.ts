@@ -18,7 +18,6 @@ export class ProductEditComponent implements OnInit {
     category: {
       id: 0,
       name: '',
-      products: []
     },
     status: 1
   };
@@ -47,8 +46,10 @@ export class ProductEditComponent implements OnInit {
 
   update() {
     this.productService.update(this.product).subscribe({
-      next: () => {
+      next: (response) => {
         this.router.navigate(['/products']);
+      },
+      error: (error) => {
       }
     });
   }

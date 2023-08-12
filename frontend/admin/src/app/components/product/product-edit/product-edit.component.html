@@ -8,30 +8,33 @@
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">Product name <span style="color: red">*</span></label>
-              <input type="text" name="name" class="form-control" required/>
+              <input type="text" [(ngModel)]="product.name" name="name" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">Image <span style="color: red">*</span></label>
-              <input class="form-control" name="image" type="file" required>
+              <span>
+                Upload ảnh tại: <a href="https://imgur.com/upload" target="_blank">imgurl.com</a> rồi copy link
+              </span>
+              <input class="form-control" [(ngModel)]="product.image" name="image" type="text" required>
+              <img src="{{product.image}}" alt="" style="width: 100px; margin: 10px 0px;">
             </div>
             <div class="mb-3">
               <label class="form-label">Quantity <span style="color: red">*</span></label>
-              <input type="text" name="quantity" class="form-control" required/>
+              <input type="text" [(ngModel)]="product.quantity" name="quantity" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">Price <span style="color: red">*</span></label>
-              <input type="text" name="price" class="form-control" required/>
+              <input type="text" [(ngModel)]="product.price" name="price" class="form-control" required/>
             </div>
             <div class="mb-3">
               <label class="form-label">Status <span style="color: red">*</span></label>
-              <select id="defaultSelect" name="status" class="form-select">
-                <option>Please choose</option>
-                <option value="1" selected>active</option>
-                <option value="2">deactive</option>
+              <select id="defaultSelect" name="status" class="form-select" [(ngModel)]="product.status">
+                <option [ngValue]="1">Active</option>
+                <option [ngValue]="0">Deactive</option>
               </select>
             </div>
             <div>
-              <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+              <button (click)="update()" class="btn btn-primary" style="float: right">Submit</button>
             </div>
           </div>
         </div>
