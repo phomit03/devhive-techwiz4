@@ -43,10 +43,10 @@ public class NewController {
         return new ResponseEntity<>("New delete successfully",HttpStatus.OK);
     }
 
-    @GetMapping("/latest")
-    public ResponseEntity<List<NewDTO>> getLatestNews(@RequestParam("count") int count) {
-        List<NewDTO> latestNews = newService.getLatestNews(count);
-        return new ResponseEntity<>(latestNews, HttpStatus.OK);
+    @GetMapping("/getLatest")
+    public ResponseEntity<List<NewDTO>> getLatestNews() {
+        List<NewDTO> latestNewsDTO = newService.getLatestNews(3);
+        return ResponseEntity.ok(latestNewsDTO);
     }
 
 

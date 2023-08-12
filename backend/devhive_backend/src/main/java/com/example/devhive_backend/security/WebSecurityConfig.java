@@ -79,7 +79,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
             .mvcMatchers(HttpMethod.POST,"/api/new/{id}").hasAnyRole("ADMIN")
             .mvcMatchers(HttpMethod.DELETE,"/api/new/{id}").hasAnyRole("ADMIN")
             // tim 3 bai bao
-            .mvcMatchers(HttpMethod.GET,"/api/new/latest").hasAnyRole("ADMIN","USER")
+            .mvcMatchers(HttpMethod.GET,"/api/new/getLatest").hasAnyRole("ADMIN","USER")
             //category
             .antMatchers("/api/category/getAll").hasAnyRole("ADMIN","USER")
             .mvcMatchers(HttpMethod.GET,"/api/category/{id}").hasAnyRole("ADMIN","USER")
