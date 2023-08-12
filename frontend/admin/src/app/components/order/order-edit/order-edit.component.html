@@ -8,27 +8,24 @@
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">Username <span style="color: red">*</span></label>
-              <select name="username" class="form-select">
-                <option>Please choose</option>
-                <option value="1" selected>one</option>
-                <option value="2">two</option>
-              </select>
+              <input type="text" [(ngModel)]="order.user.username" class="form-control" readonly>
             </div>
             <div class="mb-3">
               <label class="form-label">Total Price <span style="color: red">*</span></label>
-              <input type="text" name="total_price" class="form-control" required/>
+              <input type="text" name="total_price" class="form-control" [(ngModel)]="order.totalPrice" readonly/>
             </div>
             <div class="mb-3">
               <label class="form-label">Status <span style="color: red">*</span></label>
               <select name="status" class="form-select">
                 <option>Please choose</option>
-                <option value="1" selected>booked</option>
-                <option value="2">delivery</option>
-                <option value="2">cancelled</option>
+                <option value="1" selected>Processing</option>
+                <option value="2">Delivery</option>
+                <option value="3">Success</option>
+                <option value="4">Canceled</option>
               </select>
             </div>
             <div>
-              <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+              <button (click)="update()" class="btn btn-primary" style="float: right">Submit</button>
             </div>
           </div>
         </div>
