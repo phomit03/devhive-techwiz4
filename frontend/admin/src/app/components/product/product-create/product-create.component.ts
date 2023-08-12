@@ -24,7 +24,7 @@ export class ProductCreateComponent {
     quantity: '',
     price: 0,
     category: { id: 0, name: '', products: [] },
-    status: 0
+    status: 1
   }
 
   categories: Category[] = []

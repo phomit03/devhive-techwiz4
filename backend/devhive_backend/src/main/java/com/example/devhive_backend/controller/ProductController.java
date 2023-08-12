@@ -29,8 +29,8 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createProduct(@RequestBody ProductDTO productDTO, @RequestParam("image") MultipartFile image) {
-        productService.createProduct(productDTO, image);
+    public ResponseEntity<String> createProduct(@ModelAttribute ProductDTO productDTO, @RequestParam("imageFile") MultipartFile imageFile) {
+        productService.createProduct(productDTO, imageFile);
         return new ResponseEntity<>("Product created successfully",HttpStatus.OK);
     }
     @PostMapping("/{id}")

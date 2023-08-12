@@ -13,7 +13,6 @@ import { MatchListComponent } from './components/match/match-list/match-list.com
 import { NewsListComponent } from './components/news/news-list/news-list.component';
 import { NewsCreateComponent } from './components/news/news-create/news-create.component';
 import { NewsEditComponent } from './components/news/news-edit/news-edit.component';
-import { PlayeListComponent } from './components/player/player-list/playe-list.component';
 import { PlayerCreateComponent } from './components/player/player-create/player-create.component';
 import { PlayerEditComponent } from './components/player/player-edit/player-edit.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
@@ -28,6 +27,7 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
 import { OrderEditComponent } from './components/order/order-edit/order-edit.component';
 import { OrderListComponent } from './components/order/order-list/order-list.component';
 import { AuthGuardService } from './services/auth/auth-guard.service';
+import { PlayerListComponent } from './components/player/player-list/player-list.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -49,7 +49,7 @@ const routes: Routes = [
     {path: 'news/create', component: NewsCreateComponent},
     {path: 'news/edit', component: NewsEditComponent},
 
-    {path: 'player', component: PlayeListComponent},
+    {path: 'player', component: PlayerListComponent},
     {path: 'player/create', component: PlayerCreateComponent},
     {path: 'player/edit', component: PlayerEditComponent},
 
